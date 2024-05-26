@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:matriculasapp/pages/home_page.dart';
 import 'package:matriculasapp/pages/matricula_page.dart';
 
 void main() {
   runApp(
     MaterialApp(
-      home: MatriculaPage(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
     ),
   );

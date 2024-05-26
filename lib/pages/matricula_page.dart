@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matriculasapp/models/carrera_model.dart';
+import 'package:matriculasapp/models/institucion_model.dart';
 import 'package:matriculasapp/models/matricula_model.dart';
 import 'package:matriculasapp/widgets/item_card.dart';
 import 'package:matriculasapp/models/alumno_model.dart';
@@ -26,6 +27,32 @@ class _MatriculaPageState extends State<MatriculaPage> {
     AlumnoModel("Juanito", "juan23@qwe", "13245687"),
     AlumnoModel("Pedro", "Ped@sd", "7777777"),
     AlumnoModel("Anasss", "email.ema@ma", "55555555"),
+  ];
+
+  List<InstitucionModel> institucionesList = [
+    InstitucionModel(
+        direccion: "av123",
+        matriculas: [
+          MatriculaModel(
+            alumno: AlumnoModel(
+              "Pedro",
+              "pedro123@gmail.com",
+              "13245678",
+            ),
+            fecha: "20/20/21",
+            carrera: CarreraModel(
+                titulo: "Ingeniero de sistemas", duracion: "5 años"),
+          ),
+        ],
+        nombre: "TECSUP",
+        ruc: "132465",
+        telefono: "123465"),
+    InstitucionModel(
+        direccion: "LIMA",
+        matriculas: [],
+        nombre: "PUCP",
+        ruc: "132222222465",
+        telefono: "11111"),
   ];
 
   // generateListTiles() {
@@ -62,8 +89,19 @@ class _MatriculaPageState extends State<MatriculaPage> {
       body: Center(
         child: Column(
           children: [
-            Text("Mis Alumnos"),
-            // ...tilesList,
+            ...institucionesList.map(
+              (instiSeleccionada) {
+                return Column(
+                  children: [
+                    Text(instiSeleccionada.nombre),
+                    ...instiSeleccionada.matriculas.map(
+                      (e) => Text("Hola"),
+                    )
+                  ],
+                );
+              },
+            ),
+            Text("NOMBRE DE ISTITUCION"),
             ...alumnoList
                 .map(
                   (alumnoSeleccionado) => ItemCard(
