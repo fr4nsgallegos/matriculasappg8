@@ -47,10 +47,10 @@ class _MatriculaPageState extends State<MatriculaPage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Alumno auxAlumno = Alumno("Pancracio", "correo@core", "88888888");
+          Alumno auxAlumno = Alumno("lana", "correo@core", "88888888");
           alumnoList.add(auxAlumno);
-
-          generateListTiles();
+          // tilesList = [];
+          // generateListTiles();
           setState(() {});
         },
         child: Icon(Icons.add),
@@ -62,15 +62,15 @@ class _MatriculaPageState extends State<MatriculaPage> {
         child: Column(
           children: [
             Text("Mis Alumnos"),
-            ...tilesList,
-            // ...alumnoList
-            //     .map(
-            //       (mandarina) => AlumnoCard(
-            //         name: mandarina.nombre,
-            //         institution: "PUCP",
-            //       ),
-            //     )
-            //     .toList(),
+            // ...tilesList,
+            ...alumnoList
+                .map(
+                  (mandarina) => AlumnoCard(
+                    name: mandarina.nombre,
+                    institution: "PUCP",
+                  ),
+                )
+                .toList(),
           ],
         ),
       ),
