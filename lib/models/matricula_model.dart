@@ -1,12 +1,12 @@
 import 'package:matriculasapp/models/alumno_model.dart';
 import 'package:matriculasapp/models/carrera_model.dart';
 
-class Matricula {
-  Alumno alumno;
+class MatriculaModel {
+  AlumnoModel alumno;
   String? fecha;
   String hora;
-  Carrera carrera;
-  Matricula({
+  CarreraModel carrera;
+  MatriculaModel({
     required this.alumno,
     this.fecha,
     this.hora = "10:00",

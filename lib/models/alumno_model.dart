@@ -1,8 +1,8 @@
-class Alumno {
+class AlumnoModel {
   String nombre;
   String correo;
   String dni;
-  Alumno(
+  AlumnoModel(
     this.nombre,
     this.correo,
     this.dni,
