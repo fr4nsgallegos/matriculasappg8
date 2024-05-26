@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matriculasapp/widgets/alumno_card.dart';
 
 class MatriculaPage extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class MatriculaPage extends StatelessWidget {
       body: Column(
         children: [
           generateListTile("Jhonny Gallegos", "TECSUP 01"),
-          GenerateListTile2(
+          AlumnoCard(
             name: "Jhonny",
             institution: "PUCP",
           ),
@@ -32,28 +33,4 @@ Widget generateListTile(String name, String institution) {
       },
     ),
   );
-}
-
-class GenerateListTile2 extends StatelessWidget {
-  String name;
-  String institution;
-  GenerateListTile2({
-    required this.name,
-    required this.institution,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(Icons.person),
-      title: Text(name),
-      subtitle: Text(institution),
-      trailing: IconButton(
-        icon: Icon(Icons.delete),
-        onPressed: () {
-          print("Hola");
-        },
-      ),
-    );
-  }
 }
