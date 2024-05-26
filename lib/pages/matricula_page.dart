@@ -9,31 +9,50 @@ class MatriculaPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          ListTile(
-            leading: Icon(Icons.person),
-            title: Text("Jhonny Gallegos"),
-            subtitle: Text("Tecsup"),
-            trailing: GestureDetector(
-              child: Icon(Icons.delete),
-              onTap: () {
-                print("Hola");
-              },
-              onDoubleTap: () {
-                print("DOBLE TAP");
-              },
-            ),
-
-            //     IconButton(
-            //   icon: Icon(Icons.delete),
-            //   onPressed: () {
-            //     print("Hola");
-            //   },
-            // )
-            // onTap: () {
-            //   print("Hola");
-            // },
-          )
+          generateListTile("Jhonny Gallegos", "TECSUP 01"),
+          GenerateListTile2(
+            name: "Jhonny",
+            institution: "PUCP",
+          ),
         ],
+      ),
+    );
+  }
+}
+
+Widget generateListTile(String name, String institution) {
+  return ListTile(
+    leading: Icon(Icons.person),
+    title: Text(name),
+    subtitle: Text(institution),
+    trailing: IconButton(
+      icon: Icon(Icons.delete),
+      onPressed: () {
+        print("Hola");
+      },
+    ),
+  );
+}
+
+class GenerateListTile2 extends StatelessWidget {
+  String name;
+  String institution;
+  GenerateListTile2({
+    required this.name,
+    required this.institution,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(Icons.person),
+      title: Text(name),
+      subtitle: Text(institution),
+      trailing: IconButton(
+        icon: Icon(Icons.delete),
+        onPressed: () {
+          print("Hola");
+        },
       ),
     );
   }
