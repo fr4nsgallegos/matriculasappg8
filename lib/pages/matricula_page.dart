@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:matriculasapp/models/carrera_model.dart';
 import 'package:matriculasapp/models/matricula_model.dart';
-import 'package:matriculasapp/widgets/alumno_card.dart';
+import 'package:matriculasapp/widgets/item_card.dart';
 import 'package:matriculasapp/models/alumno_model.dart';
 
 class MatriculaPage extends StatefulWidget {
@@ -28,15 +28,15 @@ class _MatriculaPageState extends State<MatriculaPage> {
     Alumno("Anasss", "email.ema@ma", "55555555"),
   ];
 
-  generateListTiles() {
-    alumnoList.forEach((element) {
-      tilesList.add(AlumnoCard(name: element.nombre, institution: "tecsup"));
-    });
-  }
+  // generateListTiles() {
+  //   alumnoList.forEach((element) {
+  //     tilesList.add(ItemCard(name: element.nombre, institution: "tecsup"));
+  //   });
+  // }
 
   @override
   void initState() {
-    generateListTiles();
+    // generateListTiles();
 
     // TODO: implement initState
     super.initState();
@@ -65,9 +65,21 @@ class _MatriculaPageState extends State<MatriculaPage> {
             // ...tilesList,
             ...alumnoList
                 .map(
-                  (mandarina) => AlumnoCard(
-                    name: mandarina.nombre,
+                  (alumnoSeleccionado) => ItemCard(
+                    name: alumnoSeleccionado.nombre,
                     institution: "PUCP",
+                    funcionDelete: () {
+                      // alumnoList.removeLast();
+                      // alumnoList.removeAt(1);
+                      // alumnoList.removeRange(0, 2);
+                      alumnoList.remove(alumnoSeleccionado);
+                      setState(() {});
+                    },
+                    funcionEdit: () {
+                      print("editandoooo");
+
+                      setState(() {});
+                    },
                   ),
                 )
                 .toList(),
