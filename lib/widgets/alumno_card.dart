@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matriculasapp/models/alumno_model.dart';
 
 class AlumnoCard extends StatelessWidget {
   String name;

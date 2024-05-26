@@ -4,8 +4,14 @@ import 'package:matriculasapp/models/matricula_model.dart';
 import 'package:matriculasapp/widgets/alumno_card.dart';
 import 'package:matriculasapp/models/alumno_model.dart';
 
-class MatriculaPage extends StatelessWidget {
+class MatriculaPage extends StatefulWidget {
+  @override
+  State<MatriculaPage> createState() => _MatriculaPageState();
+}
+
+class _MatriculaPageState extends State<MatriculaPage> {
   List<Widget> tilesList = [];
+
   Matricula newMatricula = Matricula(
     alumno: Alumno(
       "Pedro",
@@ -29,27 +35,43 @@ class MatriculaPage extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     generateListTiles();
 
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Alumno auxAlumno = Alumno("Pancracio", "correo@core", "88888888");
+          alumnoList.add(auxAlumno);
+
+          generateListTiles();
+          setState(() {});
+        },
+        child: Icon(Icons.add),
+      ),
       appBar: AppBar(
         title: Text("Matrículas"),
       ),
       body: Center(
         child: Column(
-          // mainAxisAlignment: cro.center,
           children: [
             Text("Mis Alumnos"),
             ...tilesList,
+            // ...alumnoList
+            //     .map(
+            //       (mandarina) => AlumnoCard(
+            //         name: mandarina.nombre,
+            //         institution: "PUCP",
+            //       ),
+            //     )
+            //     .toList(),
           ],
-          // [
-          //   // generateListTile("Jhonny Gallegos", "TECSUP 01"),
-          //   // AlumnoCard(
-          //   //   name: "Jhonny",
-          //   //   institution: "PUCP",
-          //   // ),
-          // ],
         ),
       ),
     );
