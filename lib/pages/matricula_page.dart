@@ -84,7 +84,8 @@ class _MatriculaPageState extends State<MatriculaPage> {
         child: Icon(Icons.add),
       ),
       body: SafeArea(
-        child: Center(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
           child: ListView(
             children: [
               ...institucionesList.map(
@@ -96,11 +97,15 @@ class _MatriculaPageState extends State<MatriculaPage> {
                         cantidadMatriculas: instiSeleccionada.matriculas.length,
                         addMatricula: () {
                           instiSeleccionada.matriculas.add(
-                            MatriculaModel(alumno: alumno1, carrera: carrera1),
+                            MatriculaModel(alumno: alumno1, carrera: carrera2),
+                            // newMatricula,
                           );
                           setState(() {});
                         },
-                        restartMatriculas: () {},
+                        restartMatriculas: () {
+                          instiSeleccionada.matriculas.clear();
+                          setState(() {});
+                        },
                       ),
                       instiSeleccionada.matriculas.length == 0
                           ? Text(
@@ -112,7 +117,14 @@ class _MatriculaPageState extends State<MatriculaPage> {
                                 ...instiSeleccionada.matriculas.map(
                                   (matriculaSeleccionada) => ItemCard(
                                     name: matriculaSeleccionada.alumno.nombre,
-                                    institution: instiSeleccionada.nombre,
+                                    correo: matriculaSeleccionada.alumno.correo,
+                                    carrera:
+                                        matriculaSeleccionada.carrera.titulo,
+                                    fechaMatricula:
+                                        matriculaSeleccionada.fecha ?? "-",
+                                    // matriculaSeleccionada.fecha == null
+                                    //     ? "-"
+                                    //     : matriculaSeleccionada.fecha!,
                                     funcionDelete: () {
                                       instiSeleccionada.matriculas
                                           .remove(matriculaSeleccionada);
