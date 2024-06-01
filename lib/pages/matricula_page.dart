@@ -78,13 +78,14 @@ class _MatriculaPageState extends State<MatriculaPage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          institucionesList.add(institucion3);
           setState(() {});
         },
         child: Icon(Icons.add),
       ),
       body: SafeArea(
         child: Center(
-          child: Column(
+          child: ListView(
             children: [
               ...institucionesList.map(
                 (instiSeleccionada) {
